@@ -11,27 +11,29 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseClass {
 
 	public WebDriver driver;
 
-	public WebDriver initializeDriver() throws IOException{
+	@BeforeMethod
+	public void initializeDriver() throws IOException{
 
 		Properties prop = new Properties();
-		FileInputStream fs = new FileInputStream("E:/STUDY_STUFF/SQA/Workplace/RealTimeProject/src/main/java/academy/data.properties");
+		FileInputStream fs = new FileInputStream("C:/Users/Shubham Verma/realtime-project/RealTimeProject/src/main/java/academy/data.properties");
 		
 		prop.load(fs);
 		String browserName = prop.getProperty("browser");
-		String url = prop.getProperty("url");
+		//String url = prop.getProperty("url");
 
 		if(browserName.equals("chrome")){
-			System.setProperty("webdriver.chrome.driver", "Resource/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "./Resource/chromedriver.exe");
 			driver = new ChromeDriver();	
-			driver.navigate().to(url);
-			driver.manage().window().maximize();
+			/*driver.navigate().to(url);*/
+			//driver.manage().window().maximize();
 		}
-		else if(browserName.equals("firefox")){
+		/*else if(browserName.equals("firefox")){
 			System.setProperty("webdriver.gecko.driver", "Resource/geckodriver.exe");
 			driver = new FirefoxDriver();	
 			driver.navigate().to("https://www.facebook.com/");
@@ -46,8 +48,7 @@ public class BaseClass {
 			driver = new ChromeDriver(capabilities);
 			driver.navigate().to("https://www.facebook.com/");
 			driver.manage().window().maximize();
-		}
-		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		return driver;
+		}*/
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
 	}
 }

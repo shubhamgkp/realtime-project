@@ -6,6 +6,7 @@
       <class name="academy.Home">
         <methods>
           <include name="home"/>
+          <include name="initializeDriver"/>
         </methods>
       </class> <!-- academy.Home -->
     </classes>

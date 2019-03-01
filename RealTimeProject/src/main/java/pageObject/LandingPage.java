@@ -1,20 +1,22 @@
 package pageObject;
 
-import base.Page;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LandingPage extends Page{
+public class LandingPage {
 
-
-	public MyProfile gotoProfile()
-	{
+	public WebDriver driver;
+	@FindBy(xpath="//span[text()='Login']")
+	WebElement clickLogin;
+	
+	public LandingPage(WebDriver driver){
 		
-		tn.doLogout();
-		return new MyProfile();
-		
-		
-		
+		this.driver=driver;
 	}
-
-
-
+	
+	public void getLogin(){
+		
+		clickLogin.click();
+	}
 }
